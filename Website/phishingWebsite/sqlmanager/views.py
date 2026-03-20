@@ -14,6 +14,7 @@ email = "JohJohnsen@gmail.com"
 
 def InsertData(tableName, data):
     conn, cursor = cursorConnect()
+    print("From SQL:", data)
     query = f"INSERT INTO {tableName} (Name, Email, Password, Company, IsAdmin) VALUES (?, ?, ?, ?, ?);"
     cursor.execute(query, data)
     conn.commit()
@@ -40,9 +41,11 @@ def getHashedPassword(tableName, email):
     query = f"SELECT Password FROM {tableName} WHERE Email = ?;"
     cursor.execute(query, (email,))
     conn.commit()
+    x = cursor.fetchall()[0][0]
+    conn.close()
     
+    return x 
     
-    return cursor.fetchall()[0][0]
 
 
 def main():

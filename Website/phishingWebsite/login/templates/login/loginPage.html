@@ -17,7 +17,7 @@
 		<label for="password">Password</label>
 		<input type="password" id="password" name="password" required>
 
-		<button type="submit">Login</button>
+		<button onclick="submitLogin()">Login</button>
 	</form>
 </body>
 </html>
@@ -41,7 +41,7 @@
         }
 
 
-		// Function for logging in.
+        // Function for logging in.
         async function submitLogin() {
             // Get the values, entered by the user. 
             
@@ -56,15 +56,18 @@
             
                 // Hash the password, using SHA512. This is compared to the already stored version of the hashed password, 
                 // which was appended when the user created the account, in the backend.
-                hashedPassword = await CryptoJS.SHA512(password);
+                hashedPassword = CryptoJS.SHA512(password).toString();
                 
                 //Send the data to the backend to be compared
                 const formData = new FormData();
                 formData.append('email', email);
                 formData.append('password', hashedPassword);   
 
-                fetch('/index', {
+                fetch("{% url 'login:index' %}", {
                     method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken
+                    },
                     body: formData
                 })
                 .then(response => {
