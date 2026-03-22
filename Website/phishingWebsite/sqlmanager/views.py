@@ -43,7 +43,7 @@ def getHashedPassword(tableName, email):
     conn.commit()
     x = cursor.fetchall()[0][0]
     conn.close()
-    
+
     return x 
     
 

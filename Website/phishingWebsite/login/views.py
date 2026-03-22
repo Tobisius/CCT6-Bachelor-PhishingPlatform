@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse
+from django.contrib.auth.hashers import check_password
 from sqlmanager.views import *
 
 tableName = "UserData"
@@ -9,15 +10,19 @@ def index(request):
     
     if request.method == "POST":
         email = request.POST.get("email")
-        password = request.POST.get("password")
-        print(f"Email: {email}, Password: {password}")
+        passwordFromFrontEnd = request.POST.get("password")
+        print(f"Email: {email}, Password: {passwordFromFrontEnd}")
         
         hashedPasswordDatabase = getHashedPassword(tableName, email)
         print("Password from db: ", hashedPasswordDatabase)
-        if hashedPasswordDatabase == password:
+        print(request.POST)
+        if hashedPasswordDatabase == passwordFromFrontEnd:
+            
+            request.session['user_email'] = email
+            
             return redirect("login:loginSuccess")
         else: 
-            return HttpResponse("Login failed....")
+            return render(request, 'login/loginPage.html', {'error': 'Invalid credentials'})
         
     return render(request, 'login/loginPage.html')
 
