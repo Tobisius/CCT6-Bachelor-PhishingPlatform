@@ -13,7 +13,8 @@ SECRET_KEY = 'django-insecure-ht(!a3o4#$9_iih2rf^--4&v1(-))*s60cxb_3qtgy$bgcxm-b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# HUSK AT OPDATERE TIL DET RIGTIGE RAILWAY DOMÆNE
+ALLOWED_HOSTS = ["cct6-bachelor-phishingplatform-production.up.railway.app"]
 
 
 # Application definition
