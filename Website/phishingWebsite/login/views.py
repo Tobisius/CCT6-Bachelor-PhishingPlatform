@@ -11,11 +11,8 @@ def index(request):
     if request.method == "POST":
         email = request.POST.get("email")
         passwordFromFrontEnd = request.POST.get("password")
-        print(f"Email: {email}, Password: {passwordFromFrontEnd}")
         
         hashedPasswordDatabase = getHashedPassword(tableName, email)
-        print("Password from db: ", hashedPasswordDatabase)
-        print(request.POST)
         if hashedPasswordDatabase == passwordFromFrontEnd:
             
             request.session['user_email'] = email

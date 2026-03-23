@@ -25,7 +25,6 @@ def goToDashboard(request):
         print(f"Name: {name}, Email: {email}, Password: {password}, Company: {company}, isAdmin: {isAdmin}")
 
         data = (name, email, password, company, isAdmin)
-        print(data)
         InsertData(tableName, data)
         
     

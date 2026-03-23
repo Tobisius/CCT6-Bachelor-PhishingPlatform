@@ -8,10 +8,6 @@ def cursorConnect():
     return conn, cursor
     
 
-tableName = "UserData"
-coloums = ("Name", "Email", "Password", "Company Relation", "IsAdmin")
-email = "JohJohnsen@gmail.com"
-
 def InsertData(tableName, data):
     conn, cursor = cursorConnect()
     print("From SQL:", data)
@@ -46,20 +42,3 @@ def getHashedPassword(tableName, email):
 
     return x 
     
-
-
-def main():
-    #InsertData(tableName, data)
-    #DeleteData(tableName, email)
-    print(getHashedPassword(tableName, email))
-    
-
-    """TableData = GetData(tableName)
-    for row in TableData:
-        print("\n")
-        print(row)
-    """
-    
-    
-if __name__ == "__main__":
-    main()
