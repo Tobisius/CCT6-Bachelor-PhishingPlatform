@@ -26,7 +26,7 @@ body {
 	line-height: 1.5;
 	min-height: 100vh;
 	font-family: "Be Vietnam Pro", sans-serif;
-	background-color: var(--c-gray-900);
+	background-color: var(--c-gray-800);
 	color: var(--c-text-primary);
 	display: flex;
 	justify-content: center;
@@ -63,20 +63,19 @@ a {
 
 .app {
 	min-height: 80vh;
-	width: 95%;
+	width: 100%;
 	max-width: 1600px;
 	background-color: var(--c-gray-800);
-	padding: 2vw 4vw 6vw;
+	padding: 0vw 4vw 6vw;
 	display: flex;
 	flex-direction: column;
 }
 
 .app-header {
 	display: grid;
-	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
-			max-content,
-			400px
-		);
+	grid-template-columns: 	minmax(min-content, 175px)
+							minmax(max-content, 1fr) 
+							minmax(max-content, 300px);
 	column-gap: 4rem;
 	align-items: flex-end;
 	@media (max-width: 1200px) {
